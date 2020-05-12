@@ -1,6 +1,6 @@
 from os import walk
 import xml.etree.ElementTree as ET
-import database as db
+from database import BookDao
 
 def parse_fields_in_opf_file(xmlFileName):
     try:
@@ -16,16 +16,12 @@ def parse_fields_in_opf_file(xmlFileName):
             subjects.append(subject.text)
 
         """
-        print ("--------------------------------------------------")
-        print (title)
         print (creator)
-        print (description)
-        print (language)
         print (subjects)
         """
 
         # TODO: Insert record in DB
-        db.save_in_db(title, description)
+        BookDao().save_in_db(title, description, language)
 
     except:
         # TODO: Create a log for each filed file
