@@ -1,7 +1,6 @@
 from os import walk
 import xml.etree.ElementTree as ET
-
-
+import database as DB
 
 def parse_fields_in_opf_file(xmlFileName):
     try:
@@ -43,6 +42,9 @@ def dicover_folders_in_folder(folder_path):
         for dir in dirnames: 
             dicover_folders_in_folder(folder_path + "\\" + dir)
         break    
-    
+
+# TODO: Move this to config file    
 path = "D:\\personal\\books\\Calibre Library\\Aames, Lani"
 dicover_folders_in_folder(path)
+
+

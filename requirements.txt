@@ -1,0 +1,4 @@
+flake8
+black
+sqlalchemy
+pymysql>=0.9.3
