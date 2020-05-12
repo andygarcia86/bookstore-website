@@ -1,6 +1,6 @@
 from os import walk
 import xml.etree.ElementTree as ET
-import database as DB
+import database as db
 
 def parse_fields_in_opf_file(xmlFileName):
     try:
@@ -15,14 +15,17 @@ def parse_fields_in_opf_file(xmlFileName):
         for subject in metadata.findall('{http://purl.org/dc/elements/1.1/}subject'):
             subjects.append(subject.text)
 
+        """
         print ("--------------------------------------------------")
         print (title)
         print (creator)
         print (description)
         print (language)
         print (subjects)
+        """
 
         # TODO: Insert record in DB
+        db.save_in_db(title, description)
 
     except:
         # TODO: Create a log for each filed file
@@ -36,15 +39,15 @@ def process_files_in_folder(path, filenames):
             parse_fields_in_opf_file(path + "\\" + fn)
 
 
-def dicover_folders_in_folder(folder_path):
+def discover_folders_in_folder(folder_path):
     for (dirpath, dirnames, filenames) in walk(folder_path):
         process_files_in_folder(path=folder_path, filenames=filenames)
         for dir in dirnames:
-            dicover_folders_in_folder(folder_path + "\\" + dir)
+            discover_folders_in_folder(folder_path + "\\" + dir)
         break
 
 # TODO: Move this to config file
 path = "D:\\Andy\\books\\! Library\\Aames, Lani"
-dicover_folders_in_folder(path)
+discover_folders_in_folder(path)
 
 
