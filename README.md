@@ -4,8 +4,8 @@ Python application for read OPF files and organize your personal library in your
 
 ## Requirements
 
-1. Pyhon 3+ 
+1. Python 3+
 
 ## Setup
 
-1. Install the requirments. Run `pip install -r requirements.txt` in the CMD
+1. Install the requirements. Run `pip install -r requirements.txt` in the CMD

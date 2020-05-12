@@ -14,7 +14,7 @@ def parse_fields_in_opf_file(xmlFileName):
         subjects = []
         for subject in metadata.findall('{http://purl.org/dc/elements/1.1/}subject'):
             subjects.append(subject.text)
-        
+
         print ("--------------------------------------------------")
         print (title)
         print (creator)
@@ -27,10 +27,10 @@ def parse_fields_in_opf_file(xmlFileName):
     except:
         # TODO: Create a log for each filed file
         print("An exception occurred with OPF: ", xmlFileName)
-        
+
 
 def process_files_in_folder(path, filenames):
-    for fn in filenames: 
+    for fn in filenames:
         file_name = str(fn)
         if (file_name.endswith('.opf')):
             parse_fields_in_opf_file(path + "\\" + fn)
@@ -39,12 +39,12 @@ def process_files_in_folder(path, filenames):
 def dicover_folders_in_folder(folder_path):
     for (dirpath, dirnames, filenames) in walk(folder_path):
         process_files_in_folder(path=folder_path, filenames=filenames)
-        for dir in dirnames: 
+        for dir in dirnames:
             dicover_folders_in_folder(folder_path + "\\" + dir)
-        break    
+        break
 
-# TODO: Move this to config file    
-path = "D:\\personal\\books\\Calibre Library\\Aames, Lani"
+# TODO: Move this to config file
+path = "D:\\Andy\\books\\! Library\\Aames, Lani"
 dicover_folders_in_folder(path)
 
 
