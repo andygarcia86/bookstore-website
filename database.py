@@ -22,6 +22,25 @@ class BaseDao:
 class BookDao(BaseDao):
     __table_name = "books"
 
+    def get(self, title):
+        """ This function return a book searched by the title
+
+        Args:
+            title (str): Title of the book.
+        """
+
+        # TODO: Use a session with Singleton instead of
+        engine = db.create_engine(self.uri)
+        connection = engine.connect()
+        metadata = db.MetaData()
+        table = db.Table(
+            self.__table_name, metadata, autoload=True, autoload_with=engine
+        )
+        query = db.select([table]).where(table.c.title == title)
+        ResultProxy = connection.execute(query)
+        return ResultProxy.fetchone()
+
+
     def put(self, author_id, title, description, language):
         """ This function save a new book record in the database
 

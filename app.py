@@ -23,7 +23,9 @@ def parse_fields_in_opf_file(xmlFileName):
         author = AuthorDao().get(creator)
         author_id = AuthorDao().put(creator) if author is None else author.id
 
-        BookDao().put(author_id, title, description, language)
+        book = BookDao().get(title)
+        if book is None:
+            BookDao().put(author_id, title, description, language)
 
     except Exception as e:
         # TODO: Create a log for each filed file
