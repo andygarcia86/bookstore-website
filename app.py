@@ -21,7 +21,7 @@ def parse_fields_in_opf_file(xmlFileName):
         """
 
         # TODO: Insert record in DB
-        BookDao().save_in_db(title, description, language)
+        BookDao().put(title, description, language)
 
     except:
         # TODO: Create a log for each filed file
