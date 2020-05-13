@@ -1,6 +1,7 @@
 from os import walk
+import logging
 import xml.etree.ElementTree as ET
-from database import BookDao
+from database import BookDao, AuthorDao
 
 def parse_fields_in_opf_file(xmlFileName):
     try:
@@ -16,16 +17,18 @@ def parse_fields_in_opf_file(xmlFileName):
             subjects.append(subject.text)
 
         """
-        print (creator)
         print (subjects)
         """
 
-        # TODO: Insert record in DB
-        BookDao().put(title, description, language)
+        author = AuthorDao().get(creator)
+        author_id = AuthorDao().put(creator) if author is None else author.id
 
-    except:
+        BookDao().put(author_id, title, description, language)
+
+    except Exception as e:
         # TODO: Create a log for each filed file
-        print("An exception occurred with OPF: ", xmlFileName)
+        # print("An exception occurred with OPF: ", xmlFileName)
+        logging.error('Error at %s', exc_info=e)
 
 
 def process_files_in_folder(path, filenames):
