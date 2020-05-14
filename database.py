@@ -99,6 +99,24 @@ class AuthorDao(BaseDao):
 class SubjectDao(BaseDao):
     __table_name = "subjects"
 
+    def get(self, name):
+        """ This function search for a Subject by a given name
+
+        Args:
+            name (str): Name of the subject.
+        """
+
+        # TODO: Use a session with Singleton instead of
+        engine = db.create_engine(self.uri)
+        connection = engine.connect()
+        metadata = db.MetaData()
+        table = db.Table(
+            self.__table_name, metadata, autoload=True, autoload_with=engine
+        )
+        query = db.select([table]).where(table.c.name == name)
+        ResultProxy = connection.execute(query)
+        return ResultProxy.fetchone()
+
     def put(self, name):
         """ This function save a new subject record in the database
 

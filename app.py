@@ -6,7 +6,7 @@ import logging
 import xml.etree.ElementTree as ET
 
 # Internal imports
-from database import BookDao, AuthorDao
+from database import BookDao, AuthorDao, SubjectDao
 
 
 def parse_fields_in_opf_file(xmlFileName):
@@ -27,14 +27,19 @@ def parse_fields_in_opf_file(xmlFileName):
         language = metadata.findall("{http://purl.org/dc/elements/1.1/}language")[
             0
         ].text
-        subjects = []
-        for subject in metadata.findall("{http://purl.org/dc/elements/1.1/}subject"):
-            subjects.append(subject.text)
-
-
-        # TODO: Validate subjects exist and get the correct ids for make the relationship with the book
+        
         """
-        print (subjects)
+        # TODO: Validate subjects exist and get the correct ids for make the relationship with the book
+        subject_ids = []
+        subjects = []
+        for item in metadata.findall("{http://purl.org/dc/elements/1.1/}subject"):
+            subjects.append(item.text)
+
+            subject = SubjectDao().get(item.text)
+            subject_id = SubjectDao().put(item.text) if subject is None else subject.id
+            subject_ids.append(subject_id)
+
+        print(subject_ids)
         """
 
         author = AuthorDao().get(creator)
