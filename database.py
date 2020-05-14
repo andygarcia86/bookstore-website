@@ -1,21 +1,15 @@
 import sqlalchemy as db
+import os
 
 
 class BaseDao:
-    # TODO: Move this to BaseDao class and use config file, using the .env file
-    __user = "root"
-    __password = "root"
-    __host = "localhost"
-    __port = 33060
-    __database = "bookstore"
-
     def __init__(self):
         self.uri = "mysql+pymysql://{user}:{password}@{host}:{port}/{database}".format(
-            user=self.__user,
-            password=self.__password,
-            host=self.__host,
-            port=self.__port,
-            database=self.__database,
+            user=os.getenv("DATABASE_USER", "root"),
+            password=os.getenv("DATABASE_PASSWORD", "root"),
+            host=os.getenv("DATABASE_HOST", "localhost"),
+            port=os.getenv("DATABASE_PORT", 33060),
+            database=os.getenv("DATABASE_NAME", "bookstore"),
         )
 
 
@@ -39,7 +33,6 @@ class BookDao(BaseDao):
         query = db.select([table]).where(table.c.title == title)
         ResultProxy = connection.execute(query)
         return ResultProxy.fetchone()
-
 
     def put(self, author_id, title, description, language):
         """ This function save a new book record in the database
