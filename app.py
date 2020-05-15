@@ -6,7 +6,7 @@ import logging
 import xml.etree.ElementTree as ET
 
 # Internal imports
-from database import BookDao, AuthorDao, SubjectDao
+from database import BookDao, AuthorDao, SubjectDao, BooksSubjectDao
 
 
 def parse_fields_in_opf_file(xmlFileName):
@@ -27,25 +27,23 @@ def parse_fields_in_opf_file(xmlFileName):
         language = metadata.findall("{http://purl.org/dc/elements/1.1/}language")[
             0
         ].text
-        
-        # TODO: Validate subjects exist and get the correct ids for make the relationship with the book
-        subject_ids = []
-        subjects = []
-        for item in metadata.findall("{http://purl.org/dc/elements/1.1/}subject"):
-            subjects.append(item.text)
-
-            subject = SubjectDao().get(item.text)
-            subject_id = SubjectDao().put(item.text) if subject is None else subject.id
-            subject_ids.append(subject_id)
-
-        print(subject_ids)
 
         author = AuthorDao().get(creator)
         author_id = AuthorDao().put(creator) if author is None else author.id
 
         book = BookDao().get(title)
-        if book is None:
-            BookDao().put(author_id, title, description, language)
+        book_id = BookDao().put(author_id, title, description, language) if book is None else book.id
+
+        for item in metadata.findall("{http://purl.org/dc/elements/1.1/}subject"):
+            # subjects.append(item.text)
+
+            subject = SubjectDao().get(item.text)
+            subject_id = SubjectDao().put(item.text) if subject is None else subject.id
+
+            book_subject = BooksSubjectDao().get(book_id, subject_id)
+            if book_subject is None:
+                BooksSubjectDao().put(book_id, subject_id)
+            
 
     except Exception as e:
         # TODO: Create a log for each filed file
