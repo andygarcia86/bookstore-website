@@ -28,7 +28,6 @@ def parse_fields_in_opf_file(xmlFileName):
             0
         ].text
         
-        """
         # TODO: Validate subjects exist and get the correct ids for make the relationship with the book
         subject_ids = []
         subjects = []
@@ -40,7 +39,6 @@ def parse_fields_in_opf_file(xmlFileName):
             subject_ids.append(subject_id)
 
         print(subject_ids)
-        """
 
         author = AuthorDao().get(creator)
         author_id = AuthorDao().put(creator) if author is None else author.id
@@ -82,5 +80,5 @@ def discover_folders_in_folder(folder_path):
 
 
 # TODO: Move this to config file or parameter
-path = "D:\\Andy\\books\\! Library\\Aames, Lani"
+path = "D:\\personal\\books\\Calibre Library\\Aames, Lani"
 discover_folders_in_folder(path)
