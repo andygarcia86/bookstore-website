@@ -133,3 +133,44 @@ class SubjectDao(BaseDao):
         )
         query = table.insert().values(name=name)
         connection.execute(query)
+
+
+class BooksSubjectDao(BaseDao):
+    __table_name = "books_subjects"
+
+    def get(self, book_id, subject_id):
+        """ This function search for a Book Subject relationship by the two keys
+
+        Args:
+            book_id (int): Book id.
+            subject_id (int): Subject id.
+        """
+
+        # TODO: Use a session with Singleton instead of
+        engine = db.create_engine(self.uri)
+        connection = engine.connect()
+        metadata = db.MetaData()
+        table = db.Table(
+            self.__table_name, metadata, autoload=True, autoload_with=engine
+        )
+        query = db.select([table]).where(table.c.book_id == book_id and table.c.subject_id == subject_id)
+        ResultProxy = connection.execute(query)
+        return ResultProxy.fetchone()
+
+    def put(self, book_id, subject_id):
+        """ This function saves a new book subject record in the database, making a relationship between a book and a subject
+
+        Args:
+            book_id (int): Book id.
+            subject_id (int): Subject id.
+        """
+
+        # TODO: Use a session with Singleton instead of
+        engine = db.create_engine(self.uri)
+        connection = engine.connect()
+        metadata = db.MetaData()
+        table = db.Table(
+            self.__table_name, metadata, autoload=True, autoload_with=engine
+        )
+        query = table.insert().values(book_id=book_id, subject_id=subject_id)
+        connection.execute(query)
