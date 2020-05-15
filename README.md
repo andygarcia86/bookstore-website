@@ -13,9 +13,13 @@ Python application for read OPF files and organize your personal library in your
 2. Run MySQL docker compose `docker-compose -f docker-compose-mysql-database.yml up --build` in the terminal or CMD
 3. Run `python app.py` in the terminal or CMD
 
-## Connect to MySQL database
+### Connect to MySQL database
 
-- Connection
-  host: localhost
-  port: 33060
+You should be able to connect to the MySQL database using any MySQL client with the following configuration
+
+- Connection:
+  - host: localhost
+  - port: 33060
+  - user: root
+  - password: root
 
