@@ -9,9 +9,14 @@ Python application for read OPF files and organize your personal library in your
 
 ## Setup
 
-1. Install the requirements. Run `pip install -r requirements.txt` in the terminal or CMD
-2. Run MySQL docker compose `docker-compose -f docker-compose-mysql-database.yml up --build` in the terminal or CMD
-3. Run `python app.py` in the terminal or CMD
+1. Install the requirements. Run `pip install -r requirements.txt` in terminal or CMD
+2. Run MySQL docker compose `docker-compose -f docker-compose-mysql-database.yml up --build` in terminal or CMD
+3. Run `python app.py` in terminal or CMD
+
+### Run Tests
+
+1. Open terminal or CMD
+2. Run the following command: `pytest .\tests\test_utils.py`
 
 ### Connect to MySQL database
 
