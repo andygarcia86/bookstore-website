@@ -3,3 +3,4 @@ black
 sqlalchemy
 pymysql>=0.9.3
 pytest
+logging

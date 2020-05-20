@@ -1,5 +1,6 @@
 # Python standard libraries
 from os import walk
+import logging
 
 # Internal imports
 from utils import XML_helper
@@ -11,6 +12,9 @@ def process_files_in_folder(path, filenames):
         path (str): Path that contains the list of files
         filenames (array): Array of filenames inside the path
     """
+
+    logging.info("Procesing folder: " + path)
+
     for fn in filenames:
         file_name = str(fn)
         if file_name.endswith(".opf"):
@@ -28,6 +32,13 @@ def discover_folders_in_folder(folder_path):
         for dir in dirnames:
             discover_folders_in_folder(folder_path + "\\" + dir)
         break
+
+def setup_login_config():
+    logging.basicConfig(filename="logs/log.txt",
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
 
 def main():
     # TODO: Move this to config file or parameter

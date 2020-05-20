@@ -5,10 +5,10 @@ import os
 class BaseDao:
     def __init__(self):
         self.uri = "mysql+pymysql://{user}:{password}@{host}:{port}/{database}".format(
-            user=os.getenv("DATABASE_USER", "root"),
-            password=os.getenv("DATABASE_PASSWORD", "root"),
+            user=os.getenv("DATABASE_USER", "admin"),
+            password=os.getenv("DATABASE_PASSWORD", "admin"),
             host=os.getenv("DATABASE_HOST", "localhost"),
-            port=os.getenv("DATABASE_PORT", 33060),
+            port=os.getenv("DATABASE_PORT", 3306),
             database=os.getenv("DATABASE_NAME", "bookstore"),
         )
 
