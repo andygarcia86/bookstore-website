@@ -29,7 +29,10 @@ def discover_folders_in_folder(folder_path):
             discover_folders_in_folder(folder_path + "\\" + dir)
         break
 
+def main():
+    # TODO: Move this to config file or parameter
+    path = "D:\\personal\\books\\Calibre Library\\Aames, Lani"
+    discover_folders_in_folder(path)
 
-# TODO: Move this to config file or parameter
-path = "D:\\personal\\books\\Calibre Library\\Aames, Lani"
-discover_folders_in_folder(path)
+if __name__ == "__main__":
+    main()
