@@ -42,7 +42,7 @@ def setup_login_config():
 
 def main():
     # TODO: Move this to config file or parameter
-    path = "D:\\personal\\books\\Calibre Library\\Aames, Lani"
+    path = "D:\\personal\\books\\Calibre Library"
     discover_folders_in_folder(path)
 
 if __name__ == "__main__":
