@@ -47,6 +47,5 @@ class XML_helper:
                 
 
         except Exception as e:
-            # TODO: Create a log for each filed file
             # print("An exception occurred with OPF: ", xmlFileName)
             logging.error("Error at %s", exc_info=e)
