@@ -22,14 +22,31 @@ function eezy_store_setup() {
 	 * If you're building a theme based on eezy-store, use a find and replace
 	 * to change 'eezy-store' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'eezy-store');
+
+	// Init language setting
+	session_start();
+	if (isset($_SESSION["lang"])) {
+		$lang = $_SESSION["lang"];
+		switch_to_locale($lang);
+	}
+	else {
+		switch_to_locale('en_US');
+	}
+
+
+	// wp-content/languages/theme-name/de_DE.mo
+	$load1 = load_theme_textdomain( 'eezy-store', trailingslashit( WP_LANG_DIR ) . 'eezy-store' );
+	// wp-content/themes/child-theme-name/languages/de_DE.mo
+	$load2 = load_theme_textdomain( 'eezy-store', get_stylesheet_directory() . '/languages' );
+	// wp-content/themes/theme-name/languages/de_DE.mo
+	$load3 = load_theme_textdomain( 'eezy-store', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-	
-	// add theme support woocommerce 	
+
+	// add theme support woocommerce
 	add_theme_support( 'woocommerce' );
-	
+
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -37,7 +54,7 @@ function eezy_store_setup() {
 	 * provide it for us.
 	 */
 	add_theme_support( 'title-tag' );
-	
+
 	// for custom logo
 	add_theme_support( 'custom-logo', array(
 		'height'      => 248,
@@ -51,14 +68,14 @@ function eezy_store_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' ); 
-	
+
 	// Thumbnail sizes
 	add_image_size( 'eezy-store-featured', 980, 600, true );
-	
+
 	add_image_size( 'eezy-store-featured-single', 980, 600, true );
-	
+
 	add_editor_style('editor-style.css');
-	
+
 	set_post_thumbnail_size( 825, 510, true );
 
 	// This theme uses wp_nav_menu() in one location.
@@ -406,14 +423,14 @@ require_once( trailingslashit( get_parent_theme_file_path() ) . 'trt-customize-p
  * Clean up the_excerpt()
  */
 function eezy_store_excerpt_length($length) {
-	
+
 	if ( is_admin() ) {
         return $length;
     }else{
 		return 50;
 	}
-	
-}		
+
+}
 
 add_filter('excerpt_length', 'eezy_store_excerpt_length');
 
@@ -423,6 +440,7 @@ function eezy_store_excerpt_more($more) {
 }
 
 add_filter('excerpt_more', 'eezy_store_excerpt_more');	
+
 
 /**
  * Implement the TGM 
@@ -457,3 +475,21 @@ require get_template_directory() . '/inc/phoen_dashboard.php';
  * Load Jetpack compatibility file.
  */
 require get_parent_theme_file_path() . '/inc/jetpack.php';
+
+/* Custom Implementations */
+function change_lang() {
+	if (isset($_GET['lang'])) {
+		$_SESSION["lang"] = $_GET['lang'];
+	}
+	wp_redirect($_SERVER['HTTP_REFERER']);
+	exit;
+}
+
+function create_routes( $router ) {
+	$router->add_route('change_lang', array(
+        'path' => 'change-lang',
+        'access_callback' => true,
+        'page_callback' => 'change_lang'
+    ));
+}
+add_action('wp_router_generate_routes', 'create_routes');

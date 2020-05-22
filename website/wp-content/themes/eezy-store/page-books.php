@@ -8,12 +8,22 @@ get_header(); ?>
 
 				<h1>Books</h1>
 
-				<hr>
+				<a href="<?php echo(get_site_url()); ?>/change-lang?lang=es_ES">Español</a>
+				<br/><br/>
+				<a href="<?php echo(get_site_url()); ?>/change-lang?lang=en_US">English</a>
+				<br/><br/>
+
+				<?php 
+				$var1 = get_locale();
+				echo $var1;
+				echo "<br/>";
+
+				?>
+
 				<?php
+				_e('hello_world', 'eezy-store');
 
-				_e('Hello world', 'eezy-store');
-
-				$domain = 'my-text-domain';
+				$domain = 'eezy-store';
 
 				// $greetings = __('hello', $domain);
 				// echo ($greetings);
@@ -43,7 +53,6 @@ get_header(); ?>
 				// echo($result);
 
 				?>
-				<hr>
 
 				<div>
 					<?php $loop = new WP_Query(array('post_type' => 'book', 'posts_per_page' => 10)); ?>

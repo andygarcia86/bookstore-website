@@ -6,12 +6,20 @@ get_header(); ?>
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
 
-				<h1>Books</h1>
+				<h1>Home</h1>
 
 				<div>
 					<?php  
+					$var1 = get_locale();
+					echo $var1;
+					echo "<br/>";
+					
+					_e('hello_world', 'eezy-store');
+
+					/*
 					$greetings = __('hello', 'my-text-domain');
 					echo($greetings);
+					*/
 
 					?>
 				</div>
