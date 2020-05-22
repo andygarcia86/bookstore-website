@@ -29,7 +29,8 @@ define( 'DB_USER', 'root' );
 define( 'DB_PASSWORD', '' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost:3309' );
+//define( 'DB_HOST', 'localhost:3309' );  // Laptop conx
+define( 'DB_HOST', 'localhost' ); // Desctop conx
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
