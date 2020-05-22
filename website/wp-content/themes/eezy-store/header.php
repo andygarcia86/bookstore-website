@@ -82,6 +82,24 @@
 				<span class="icon-bar"></span>
 				</button>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' , 'container_class'=> 'eezy-store-nav') ); ?>
+
+				<!-- Language menu -->
+				<?php $lang = substr (get_locale(), 0, 2); ?>
+				<ul id="primary-menu" class="menu nav-menu" aria-expanded="false" style="float: right;">
+					<li class="menu-item menu-item-type-custom menu-item-object-custom">
+						<a href="#"><i class="flag-icon <?php echo $lang; ?>-flag"></i> <?php echo $lang; ?></a>
+						<ul class="sub-menu">
+							<li class="menu-item menu-item-object-page">
+								<a href="<?php echo(get_site_url()); ?>/change-lang?lang=es_ES"><i class="flag-icon es-flag"></i>Español</a>
+							</li>
+							<li class="menu-item menu-item-object-page">
+								<a href="<?php echo(get_site_url()); ?>/change-lang?lang=en_US"><i class="flag-icon en-flag"></i>English</a>
+							</li>
+						</ul>
+					</li>
+					
+				</ul>
+
 			</nav><!-- #site-navigation --> 
 			
 			<span class="eezy-search-icon"><a href="javascript:void(0);"><i class="fa fa-search"></i></a></span>

@@ -368,6 +368,8 @@ function eezy_store_scripts() {
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() .'/css/font-awesome-4.7.0/css/font-awesome.min.css',array(),'4.7.0' );
 	
 	wp_enqueue_style( 'eezy-store-style', get_stylesheet_uri() );
+
+	wp_enqueue_style( 'eezy-store-custom-styles', get_template_directory_uri() .'/css/custom-styles.css',array(),'1.0' );
 	
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery' ), '3.3.4', true ); 
 	

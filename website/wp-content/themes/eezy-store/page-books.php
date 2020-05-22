@@ -8,18 +8,6 @@ get_header(); ?>
 
 				<h1>Books</h1>
 
-				<a href="<?php echo(get_site_url()); ?>/change-lang?lang=es_ES">Español</a>
-				<br/><br/>
-				<a href="<?php echo(get_site_url()); ?>/change-lang?lang=en_US">English</a>
-				<br/><br/>
-
-				<?php 
-				$var1 = get_locale();
-				echo $var1;
-				echo "<br/>";
-
-				?>
-
 				<?php
 				_e('hello_world', 'eezy-store');
 

@@ -1,0 +1,37 @@
+
+/* Custom CSSS */
+.flag-icon {
+    width: 24px;    
+    height: 16px;
+    float: left;
+    margin: 5px 5px 0 0;
+}
+
+.es-flag{
+    background: #fff url("../images/es-flag.png") no-repeat 0 0;
+    background-size: cover;
+}
+
+.en-flag{
+    background: #fff url("../images/en-flag.png") no-repeat 0 0;
+    background-size: cover;
+}
+
+/* Footer */ 
+
+.site-info {
+    border: 0;
+    padding: 15px 0;
+}
+
+.site-info .footer-menu{
+    float: left;
+}
+
+.site-info .social-menu{
+    float: right;
+}
+
+.site-info .social-menu li a {
+    margin: 0 5px;
+}
