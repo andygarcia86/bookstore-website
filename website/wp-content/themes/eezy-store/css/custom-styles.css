@@ -16,3 +16,22 @@
     background: #fff url("../images/en-flag.png") no-repeat 0 0;
     background-size: cover;
 }
+
+/* Footer */ 
+
+.site-info {
+    border: 0;
+    padding: 15px 0;
+}
+
+.site-info .footer-menu{
+    float: left;
+}
+
+.site-info .social-menu{
+    float: right;
+}
+
+.site-info .social-menu li a {
+    margin: 0 5px;
+}

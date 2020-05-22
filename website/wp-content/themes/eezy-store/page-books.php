@@ -8,14 +8,6 @@ get_header(); ?>
 
 				<h1>Books</h1>
 
-
-				<?php 
-				$var1 = get_locale();
-				echo $var1;
-				echo "<br/>";
-
-				?>
-
 				<?php
 				_e('hello_world', 'eezy-store');
 

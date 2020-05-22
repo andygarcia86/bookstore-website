@@ -21,49 +21,27 @@
 		<footer id="colophon" class="site-footer" role="contentinfo">
 		
 			<div id="inner-footer" class="clearfix">
-				
 				<div class="row">				
 						
-						<div id="widget-footer" class="clearfix">
-						
-							<?php if ( is_active_sidebar( !dynamic_sidebar('eezy_store_footer1'))) : ?>
-								
-								<div class="col-sm-3">
-										
-								</div>	
-							
-							<?php endif; ?>
-					
-							<?php if ( is_active_sidebar( !dynamic_sidebar('eezy_store_footer2'))) : ?>
-							
-							<div class="col-sm-3">
-								
-							</div>
-						
-							<?php endif; ?>
-							
-							<?php if ( is_active_sidebar( !dynamic_sidebar('eezy_store_footer3'))) : ?>
-							<div class="col-sm-3">
-									
-							</div>	
-							<?php endif; ?>
-							<?php if ( is_active_sidebar( !dynamic_sidebar('eezy_store_footer4'))) : ?>
-							
-							<div class="col-sm-3">
-								
-							</div>
-							
-							<?php endif; ?>
-							<?php if ( is_active_sidebar( !dynamic_sidebar('eezy_store_footer5'))) : ?>
-								
-							<?php endif; ?>
-						</div>
-					</div> 
-				
+				</div> 
 			</div>
 		
 			<div class="site-info">
-				<p><?php printf(esc_html(get_theme_mod("footer_copyrght_txt"))); ?> <a href="<?php echo esc_url( __( 'http://phoeniixx.com/', 'eezy-store' ) ); ?>" rel="designer"><?php esc_html_e('phoeniixx','eezy-store'); ?></a> </p>
+				<div class="footer-menu">
+					<?php wp_nav_menu( array( 'menu_id' => 'footer' , 'container_class'=> 'eezy-store-nav') ); ?>
+				</div>
+
+				<ul class="social-menu">
+					<li>
+						<a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a>
+						<a href="https://github.com/" target="_blank"><i class="fa fa-github"></i></a>
+					</li>
+				</ul>
+
+				<div class="clearfix">
+				</div>
+
 			</div><!-- .site-info -->
 			
 		</footer><!-- #colophon -->
