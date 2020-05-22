@@ -34,4 +34,15 @@
 
 .site-info .social-menu li a {
     margin: 0 5px;
+    background-color: #eaeaef;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+}
+
+.site-info .social-menu li a i{
+    font-size: 18px;
+    line-height: 30px;
 }
