@@ -1,0 +1,18 @@
+
+/* Custom CSSS */
+.flag-icon {
+    width: 24px;    
+    height: 16px;
+    float: left;
+    margin: 5px 5px 0 0;
+}
+
+.es-flag{
+    background: #fff url("../images/es-flag.png") no-repeat 0 0;
+    background-size: cover;
+}
+
+.en-flag{
+    background: #fff url("../images/en-flag.png") no-repeat 0 0;
+    background-size: cover;
+}

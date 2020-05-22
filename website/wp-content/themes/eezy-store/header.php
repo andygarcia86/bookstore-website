@@ -83,14 +83,13 @@
 				</button>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' , 'container_class'=> 'eezy-store-nav') ); ?>
 
-				
-
+				<!-- Language menu -->
 				<ul id="primary-menu" class="menu nav-menu" aria-expanded="false" style="float: right;">
 					<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom">
-						<a href="<?php echo(get_site_url()); ?>/change-lang?lang=es_ES">Español</a>
+						<a href="<?php echo(get_site_url()); ?>/change-lang?lang=es_ES"><i class="flag-icon es-flag"></i> Es</a>
 					</li>
 					<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom">
-						<a href="<?php echo(get_site_url()); ?>/change-lang?lang=en_US">English</a>
+						<a href="<?php echo(get_site_url()); ?>/change-lang?lang=en_US"><i class="flag-icon en-flag"></i>En</a>
 					</li>
 				</ul>
 
