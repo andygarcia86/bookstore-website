@@ -33,7 +33,6 @@ function eezy_store_setup() {
 		switch_to_locale('en_US');
 	}
 
-
 	// wp-content/languages/theme-name/de_DE.mo
 	$load1 = load_theme_textdomain( 'eezy-store', trailingslashit( WP_LANG_DIR ) . 'eezy-store' );
 	// wp-content/themes/child-theme-name/languages/de_DE.mo
